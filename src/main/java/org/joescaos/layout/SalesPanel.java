@@ -25,7 +25,6 @@ public class SalesPanel extends JPanel {
     private JButton refreshCustomersButton;
     private JTextArea productsArea;
 
-    //private List<> productItems;
     private List<Product> productItems;
     private List<Product> availableProducts;
     private List<Customer> availableCustomers;
@@ -50,7 +49,6 @@ public class SalesPanel extends JPanel {
         gbc.gridwidth = 2;
         formPanel.add(titleLabel, gbc);
 
-        // Panel de clientes
         JPanel customerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         customerPanel.setBorder(BorderFactory.createTitledBorder("Cliente"));
 
@@ -66,7 +64,6 @@ public class SalesPanel extends JPanel {
         gbc.gridwidth = 2;
         formPanel.add(customerPanel, gbc);
 
-        // Panel de productos
         JPanel productPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         productPanel.setBorder(BorderFactory.createTitledBorder("Producto"));
 
@@ -89,14 +86,12 @@ public class SalesPanel extends JPanel {
         gbc.gridy = 2;
         formPanel.add(productPanel, gbc);
 
-        // Área de productos seleccionados
         productsArea = new JTextArea(5, 30);
         productsArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(productsArea);
         gbc.gridy = 3;
         formPanel.add(scrollPane, gbc);
 
-        // Botones de acción
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         makeSaleButton = new JButton("Generar Venta");
         makeSaleButton.addActionListener(e -> makeSale());
@@ -111,7 +106,6 @@ public class SalesPanel extends JPanel {
 
         add(formPanel, BorderLayout.CENTER);
 
-        // Cargar datos iniciales
         loadCustomers();
         loadProducts();
     }

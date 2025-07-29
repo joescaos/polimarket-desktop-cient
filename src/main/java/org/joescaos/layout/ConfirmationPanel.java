@@ -1,8 +1,6 @@
 package org.joescaos.layout;
 
 import org.joescaos.AppFrame;
-import org.joescaos.service.AuthService;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -66,7 +66,7 @@ public class LoginPanel extends JPanel {
                     AuthService.LoginResponse response = authService.login(username, password);
 
                     parent.setAuthData(response.token, response.id);
-                    parent.showSales(); // Esto ahora activará la carga de datos
+                    parent.showSales();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(LoginPanel.this,
                             "Error al iniciar sesión: " + ex.getMessage(),

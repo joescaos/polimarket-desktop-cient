@@ -1,7 +1,6 @@
 package org.joescaos.service;
 
 import com.google.gson.Gson;
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -27,7 +26,6 @@ public class AuthService {
         loginData.put("user", username);
         loginData.put("password", password);
 
-        // Convertir a JSON
         String json = gson.toJson(loginData);
 
         RequestBody requestBody = RequestBody.create(

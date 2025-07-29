@@ -3,6 +3,7 @@ package org.joescaos;
 import org.joescaos.layout.ConfirmationPanel;
 import org.joescaos.layout.LoginPanel;
 import org.joescaos.layout.SalesPanel;
+import org.joescaos.service.SalesService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,8 +49,8 @@ public class AppFrame extends JFrame {
         cardLayout.show(cardPanel, "SALES");
     }
 
-    public void showConfirmation(String message) {
-        confirmationPanel.setMessage(message);
+    public void showConfirmation(SalesService.ConfirmationMessage message) {
+        confirmationPanel.setMessage(message.getMessage(), message.getSaleId());
         cardLayout.show(cardPanel, "CONFIRMATION");
     }
 

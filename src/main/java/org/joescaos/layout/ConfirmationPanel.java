@@ -1,6 +1,7 @@
 package org.joescaos.layout;
 
 import org.joescaos.AppFrame;
+import org.joescaos.service.AuthService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +37,7 @@ public class ConfirmationPanel extends JPanel {
         });
     }
 
-    public void setMessage(String message) {
-        messageLabel.setText("<html><div style='text-align: center;'>" + message + "</div></html>");
+    public void setMessage(String message, String saleId) {
+        messageLabel.setText("<html><div style='text-align: center;'>" + message +" sale_id:"+ saleId +"</div></html>");
     }
 }

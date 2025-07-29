@@ -1,14 +1,18 @@
 package org.joescaos.service;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.joescaos.model.Product;
 import org.joescaos.model.SaleRequest;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class SalesService {
     private static final String MAKE_SALE_URL = "http://localhost:7140/Api/PoliMarket/MakeSale";
@@ -22,7 +26,7 @@ public class SalesService {
         this.authToken = authToken;
     }
 
-    public String makeSale(SaleRequest saleRequest) throws IOException {
+    public List<ConfirmationMessage> makeSale(SaleRequest saleRequest) throws IOException {
         String json = gson.toJson(saleRequest);
 
         RequestBody requestBody = RequestBody.create(
@@ -41,7 +45,22 @@ public class SalesService {
                 throw new IOException("Error al generar la venta: " + response);
             }
 
-            return response.body().string();
+            String responseBody = response.body().string();
+            Type salesResponseType = new TypeToken<List<ConfirmationMessage>>(){}.getType();
+            return gson.fromJson(responseBody, salesResponseType);
+        }
+    }
+
+    public static class ConfirmationMessage {
+        private String message;
+        private String sale_id;
+
+        public String getMessage() {
+            return message;
+        }
+
+        public String getSaleId() {
+            return sale_id;
         }
     }
 }

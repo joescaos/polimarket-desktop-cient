@@ -249,9 +249,10 @@ public class SalesPanel extends JPanel {
                     productItems);
 
             SalesService salesService = new SalesService(parent.getAuthToken());
-            String response = salesService.makeSale(request);
+            List<SalesService.ConfirmationMessage> response = salesService.makeSale(request);
 
-            parent.showConfirmation(response);
+
+            parent.showConfirmation(response.get(0));
             clearForm();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this,

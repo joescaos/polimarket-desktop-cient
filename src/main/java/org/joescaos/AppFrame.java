@@ -70,6 +70,7 @@ public class AppFrame extends JFrame {
     public void logout() {
         this.authToken = null;
         this.userId = null;
+        loginPanel.clearForm();
         showLogin();
     }
 }
